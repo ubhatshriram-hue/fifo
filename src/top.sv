@@ -19,7 +19,7 @@ module tb_top;
   initial begin
     RST = 1;
     repeat(3) @(posedge CLK);
-    RST = 0;
+    #1 RST = 0;
   end
 
 

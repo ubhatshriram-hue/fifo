@@ -39,5 +39,25 @@ modport drv(clocking cbdrv);
 modport moni(clocking cbmoni);
 modport mono(clocking cbmono);
 
+
+
+checkRST: assert property (@(posedge clk) rst |-> ((full==0)&&(empty==1)&&(data_out==0)))
+	else `uvm_error("ASSERTIONS","RST is not working")
+
+	readEmpty: assert property (@(posedge clk) disable iff(rst)
+		(rd_cs && rd_en && empty)
+		|=> ((data_out==$past(data_out))&&(empty==1)&&(full==0)))
+	else `uvm_error("ASSERTIONS","Reading an empty fifo is not working")
+
+	writeFull: assert property (@(posedge clk) disable iff(rst)
+		(wr_cs && wr_en && full)
+		|=> ((data_out==$past(data_out))&&(empty==0)&&(full==1)))
+	else `uvm_error("ASSERTIONS","Writing a full fifo is not working")
+
+
+
+
+
+
 endinterface
 

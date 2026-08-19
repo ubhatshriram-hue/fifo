@@ -13,8 +13,8 @@ super.new(name);
 endfunction
 
 `uvm_object_utils_begin(seq_item)
-  `uvm_field_int(wr_cs, UVM_ALL_ON)
   `uvm_field_int(rst, UVM_ALL_ON)
+  `uvm_field_int(wr_cs, UVM_ALL_ON)
   `uvm_field_int(rd_cs , UVM_ALL_ON)
   `uvm_field_int(wr_en, UVM_ALL_ON)
   `uvm_field_int(rd_en, UVM_ALL_ON)

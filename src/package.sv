@@ -14,7 +14,8 @@ package pkg;
   `include "inmonitor.sv"
  `include "outagent.sv"
   `include "inagent.sv"
-  `include "scoreboard.sv"
+  `include"subcriber.sv"
+	`include "scoreboard.sv"
   `include "environment.sv"
   `include "test.sv"
 endpackage

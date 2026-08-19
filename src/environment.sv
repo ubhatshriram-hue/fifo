@@ -3,7 +3,7 @@ class environment extends uvm_test;
 inagent agtin;
 outagent agtout;
 scoreboard sb;
-
+	subscriber sc;
 
 function new(string name = "environment",uvm_component parent = null);
 super.new(name,parent);
@@ -14,12 +14,14 @@ super.build_phase(phase);
 agtin=inagent::type_id::create("agtin",this);
 agtout=outagent::type_id::create("agtout",this);
 sb=scoreboard::type_id::create("sb",this);
+sc = subscriber::type_id::create("sc",this);	
 endfunction
 
 function void connect_phase(uvm_phase phase);
 agtin.moni.ap.connect(sb.inp_mon_fifo.analysis_export);
 agtout.mono.apout.connect(sb.out_mon_fifo.analysis_export);
-  endfunction
+	agtin.moni.ap.connect(sc.analysis_export);
+endfunction
 endclass
 
 

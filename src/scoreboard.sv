@@ -60,7 +60,7 @@ class scoreboard extends uvm_scoreboard;
  
     end
  
-  endtask
+ endtask
  
  
   task ref_model(seq_item t);
@@ -83,7 +83,7 @@ class scoreboard extends uvm_scoreboard;
  
     end
  
-   
+    
     t.data_out = dataout;
  
  
