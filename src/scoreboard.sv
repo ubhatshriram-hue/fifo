@@ -65,7 +65,7 @@ class scoreboard extends uvm_scoreboard;
  
   task ref_model(seq_item t);
  
-    // Reset
+    
     if (t.rst) begin
  
       full       = 0;
@@ -83,13 +83,13 @@ class scoreboard extends uvm_scoreboard;
  
     end
  
-    // Default output
+   
     t.data_out = dataout;
  
  
     if (!t.rst) begin
  
-      // WRITE
+      
       if (t.wr_cs && !full && t.wr_en) begin
  
         mem[wr_pointer] = t.data_in;
@@ -100,7 +100,7 @@ class scoreboard extends uvm_scoreboard;
       end
  
  
-      // READ
+      
       if (t.rd_cs && !empty && t.rd_en) begin
  
         dataout = mem[rd_pointer];
@@ -113,7 +113,7 @@ class scoreboard extends uvm_scoreboard;
     end
  
  
-    // FIFO status
+    
     full  = (counter == (1 << `ADDR_WIDTH));
     empty = (counter == 0);
  
